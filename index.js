@@ -72,10 +72,10 @@ const fn = async () => {
 const readFile = async()=>{
     return new Promise((resolve,reject)=>{
         let txt = []
-        fs.createReadStream('lastlog_2.log')
+        fs.createReadStream('lastlog.log')
         .pipe(ndjson.parse())
         .on('data', function (obj) {
-            txt.push({log:obj.log,time:moment(obj.time).format('YYYY-MM-DD HH:mm')})
+            txt.push({log:obj.log,time:moment(obj.time).format('YYYY-MM-DD HH:mm:ss')})
            
         })
         .on('end',()=>resolve(txt))
